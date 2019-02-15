@@ -9,7 +9,8 @@ public class Main {
 		System.out.println("System startet.");
 		Server server = new Server(Integer.parseInt(args[0]));
 		System.out.println(Integer.parseInt(args[0]));
-		new Thread(new Serverst(server)).start();
+		Serverst ServerC;
+		new Thread(ServerC = new Serverst(server)).start();
 		System.out.println("Server input.");
 		Scanner user_input = new Scanner(System.in);
 		String input = null;
@@ -19,8 +20,8 @@ public class Main {
 		}
 		user_input.close();
 		System.out.println("Server Shutdown.");
-		
-		return;
+		ServerC.stop();
+		System.exit(0);
 	}
 
 	public static void main(String[] args) {

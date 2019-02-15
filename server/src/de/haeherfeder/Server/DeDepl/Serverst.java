@@ -11,5 +11,8 @@ public class Serverst implements Runnable {
 		System.out.println("Server run.");
 		server.run();
 	}
+	public void stop() {
+		server.setrunning(false);
+	}
 
 }

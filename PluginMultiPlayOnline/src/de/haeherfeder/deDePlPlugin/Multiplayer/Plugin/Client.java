@@ -27,6 +27,7 @@ public class Client implements Runnable{
 	public Client() {
 		
 	}
+	
 	public Client(String host, int port) {
 		this.host = host;
 		this.port = port;
