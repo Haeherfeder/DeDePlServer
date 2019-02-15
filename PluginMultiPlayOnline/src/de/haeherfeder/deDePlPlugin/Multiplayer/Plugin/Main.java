@@ -15,7 +15,7 @@ public class Main implements IPlugin{
 	public void GameWindowStart(String arg0) {
 		// TODO Auto-generated method stub
 		manager.showVisualMessage("Online enabled");
-		manager.setStartPosition("Ende");
+//		manager.setStartPosition("Ende");
 		manager.DisableGameWindow();
 		manager.SinglePosition("Server");
 	}
