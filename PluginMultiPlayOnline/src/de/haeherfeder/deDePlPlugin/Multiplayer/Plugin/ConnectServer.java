@@ -1,12 +1,19 @@
 package de.haeherfeder.deDePlPlugin.Multiplayer.Plugin;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import de.haeherfeder.deDePlPlugin.Multiplayer.Plugin.packets.*;
 
 public class ConnectServer {
-
+	Plugin pl;
 	public ConnectServer(String arg0) {
+		try {
+			pl = new Plugin();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(arg0);
 		String[] parts = arg0.split(":");
 		String host = parts[0];
@@ -15,10 +22,10 @@ public class ConnectServer {
 		System.out.println("Host:"+host+":"+port);
 		Client client = new Client(host,port);
 		client.connect();
+		pl.connectedToServer(host,port);
 		client.sendObject(AddPlayerPacket());
 //		client.sendObject("");
 		client.run();
-		client.close();
 	}
 	public AddPlayerPacket AddPlayerPacket(){
 		AddPlayerPacket packet = new AddPlayerPacket();

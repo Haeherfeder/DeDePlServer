@@ -8,21 +8,29 @@ public class Plugin {
 	List<IPlugin> plugins = PluginLoader.loadPlugins(new File("./plugin"));
 	PluginMultiplayerManager manager = new PluginMultiplayerManager();
 	public  Plugin() throws IOException {
-	    for (IPlugin p : plugins) {
-	      p.setPluginMultiplayerManager(manager);
-	    }
-	    for (IPlugin p : plugins) {
-	      p.start();
-	    }
+	    
+	}
+	public void start() {
+		for (IPlugin p : plugins) {
+		      p.setPluginMultiplayerManager(manager);
+		    }
+		    for (IPlugin p : plugins) {
+		      p.MultiStart();
+		    }
 	}
     public void connectedToServer(String server,int port) {
     	for (IPlugin p : plugins) {
     		p.connectedToServer(server,port);
     	}
     }
-    public void getObject(Object packet) {
+    public void recivedObject(Object packet) {
     	for (IPlugin p : plugins) {
-    		p.getObject(packet);
+    		p.recivedObject(packet);
+    	}
+    }
+    public void stop() {
+    	for (IPlugin p : plugins) {
+    		p.MultiStop();
     	}
     }
 }

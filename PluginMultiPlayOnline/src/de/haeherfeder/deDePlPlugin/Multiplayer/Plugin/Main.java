@@ -1,19 +1,26 @@
 package de.haeherfeder.deDePlPlugin.Multiplayer.Plugin;
 
+import java.io.IOException;
+
 import de.haeherfeder.DeDePlEngine.all.IPlugin;
 import de.haeherfeder.DeDePlEngine.all.PluginManager;
 
 public class Main implements IPlugin{
 	PluginManager manager;
+	Plugin pl;
+	String EngineVersion;
 	@Override
 	public void GameStart() {
-		// TODO Auto-generated method stub
-		
+		try {
+			pl = new Plugin();
+			pl.start();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void GameWindowStart(String arg0) {
-		// TODO Auto-generated method stub
 		manager.showVisualMessage("Online enabled");
 //		manager.setStartPosition("Ende");
 		manager.DisableGameWindow();
@@ -43,7 +50,7 @@ public class Main implements IPlugin{
 
 	@Override
 	public boolean setEngineVersion(String arg0) {
-		// TODO Auto-generated method stub
+		this.EngineVersion = arg0;
 		return false;
 	}
 

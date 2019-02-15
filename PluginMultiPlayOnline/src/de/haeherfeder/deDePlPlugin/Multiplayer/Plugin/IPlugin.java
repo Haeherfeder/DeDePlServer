@@ -1,9 +1,9 @@
 package de.haeherfeder.deDePlPlugin.Multiplayer.Plugin;
 
 public interface IPlugin {
-	boolean start();
-	boolean stop();
+	boolean MultiStart();
+	boolean MultiStop();
 	void setPluginMultiplayerManager(PluginMultiplayerManager manager);
 	void connectedToServer(String server,int port);
-	void getObject(Object packet);
+	void recivedObject(Object packet);
 }

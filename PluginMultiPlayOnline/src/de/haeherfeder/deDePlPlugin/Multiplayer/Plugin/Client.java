@@ -24,6 +24,9 @@ public class Client implements Runnable{
 	private EventListener listener;
 	
 	//constructor
+	public Client() {
+		
+	}
 	public Client(String host, int port) {
 		this.host = host;
 		this.port = port;
