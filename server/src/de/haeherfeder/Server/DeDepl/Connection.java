@@ -6,6 +6,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import de.haeherfeder.deDePlPlugin.Multiplayer.Plugin.packets.*;
+
 public class Connection implements Runnable{
 	
 	private Socket socket;
@@ -32,7 +34,7 @@ public class Connection implements Runnable{
 				try {
 					Object data = in.readObject();
 					System.out.println("object recived");
-					new HandleData(data,id);
+					new HandleData(data,id,this);
 				}catch(ClassNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -44,6 +46,7 @@ public class Connection implements Runnable{
 	
 	public void close() {
 		try {
+			sendObject(new ServerClose());
 			in.close();
 			out.close();
 			socket.close();

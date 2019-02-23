@@ -8,6 +8,7 @@ import de.haeherfeder.deDePlPlugin.Multiplayer.Plugin.packets.*;
 
 public class EventListener {
 	Plugin pl;
+	@SuppressWarnings("unused")
 	public void received(Object p) {
 		try {
 			pl = new Plugin();
@@ -25,10 +26,12 @@ public class EventListener {
 			//PlayerHandler.players.remove(packet.id);
 		}else if(p instanceof FramePacket) {
 			FramePacket packet = (FramePacket)p;
-			@SuppressWarnings("unused")
 			int id = packet.id;
-			@SuppressWarnings("unused")
 			String tf = packet.tf1Text;
+		}else if(p instanceof ServerClose) {
+			new Client().close();
+			System.out.println("Server closed");
+			return;
 		}
 	}
 }

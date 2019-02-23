@@ -6,7 +6,6 @@ public class Serverst implements Runnable {
 		this.server = server;
 	}
 	public void run() {
-		// TODO Auto-generated method stub
 		server.start();
 		System.out.println("Server run.");
 		server.run();

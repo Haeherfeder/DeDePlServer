@@ -22,21 +22,22 @@ public class Main implements IPlugin{
 	@Override
 	public void GameWindowStart(String arg0) {
 		manager.showVisualMessage("Online enabled");
-//		manager.setStartPosition("Ende");
+		manager.setStartPosition("Ende");
+		System.out.println("Position set to Ende");
 		manager.DisableGameWindow();
+//		manager.setPosition(Position);
 		manager.SinglePosition("Server");
 	}
-
+	
 	@Override
 	public void PlayerInput(String arg0, String arg1) {
-		// TODO Auto-generated method stub
+		System.out.println(arg1);
 		switch(arg1) {
 		case "Server":
 			manager.showVisualMessage("Server Fenster erkannt.");
 			new ConnectServer(arg0);
 			manager.showVisualMessage("New ConnectServer fineshed");
 			break;
-		case "":
 		default:
 			break;
 		}
