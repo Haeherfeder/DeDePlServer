@@ -32,10 +32,11 @@ public class Main implements IPlugin{
 	@Override
 	public void PlayerInput(String arg0, String arg1) {
 		System.out.println(arg1);
+		String test;
 		if(arg1.startsWith("Pl_Server")) {
-			String test = arg1.replace("Pl_Server", "");
+			test = arg1.replace("Pl_Server", "");
 		}else {return;}
-		switch(arg1) {
+		switch(test) {
 		case "Server":
 			manager.showVisualMessage("Server Fenster erkannt.");
 			new ConnectServer(arg0);
