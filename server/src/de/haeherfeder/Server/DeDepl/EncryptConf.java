@@ -31,6 +31,7 @@ public class EncryptConf {
 		KeyPair kp = rsaKPG.genKeyPair();
 		PubKey = kp.getPublic();
 		Key = kp.getPrivate();
+		
 	}
 	public void start() {
 		keyGen();

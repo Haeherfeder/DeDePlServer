@@ -1,10 +1,12 @@
 package de.haeherfeder.Server.DeDepl;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 	private boolean run = true;
-
+	Plugin pl;
+	
 	public Main(String[] args) {
 		System.out.println("System startet.");
 		Server server = new Server(Integer.parseInt(args[0]));
@@ -21,6 +23,11 @@ public class Main {
 		user_input.close();
 		System.out.println("Server Shutdown.");
 		ServerC.stop();
+		try {
+			TimeUnit.SECONDS.sleep(10);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		System.exit(0);
 	}
 
@@ -35,6 +42,7 @@ public class Main {
 			run = false;
 			break;
 		default:
+			pl.ServerInput(input);
 			System.out.println("Unknown Input.");
 			break;
 		}

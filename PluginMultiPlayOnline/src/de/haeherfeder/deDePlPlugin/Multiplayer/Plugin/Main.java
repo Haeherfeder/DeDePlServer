@@ -26,12 +26,15 @@ public class Main implements IPlugin{
 		System.out.println("Position set to Ende");
 		manager.DisableGameWindow();
 //		manager.setPosition(Position);
-		manager.SinglePosition("Server");
+		manager.SinglePosition("Pl_Server"+"Server");
 	}
 	
 	@Override
 	public void PlayerInput(String arg0, String arg1) {
 		System.out.println(arg1);
+		if(arg1.startsWith("Pl_Server")) {
+			String test = arg1.replace("Pl_Server", "");
+		}else {return;}
 		switch(arg1) {
 		case "Server":
 			manager.showVisualMessage("Server Fenster erkannt.");
@@ -39,6 +42,7 @@ public class Main implements IPlugin{
 			manager.showVisualMessage("New ConnectServer fineshed");
 			break;
 		default:
+			
 			break;
 		}
 	}
